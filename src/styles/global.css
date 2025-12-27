@@ -1,0 +1,318 @@
+/* ===============================
+   Base variables & palette
+   =============================== */
+
+:root {
+  --black: #0b0b0f;
+  --black-soft: #12121a;
+
+  --purple-neon: #c77dff;
+  --purple-soft: #9d4edd;
+  --purple-glow: rgba(199, 125, 255, 0.6);
+
+  --text-main: #e5e5e5;
+  --text-muted: #a1a1aa;
+}
+
+/* ===============================
+   Global reset & body
+   =============================== */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--black);
+  color: var(--text-main);
+}
+
+body {
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(199, 125, 255, 0.08),
+      transparent 60%
+    ),
+    var(--black);
+}
+
+/* ===============================
+   Navigation
+   =============================== */
+
+.top-nav {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.top-nav nav {
+  display: flex;
+  gap: 24px;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.top-nav a:hover {
+  color: var(--purple-neon);
+  text-shadow: 0 0 6px var(--purple-glow);
+}
+
+/* ===============================
+   Background
+   =============================== */
+
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  filter: blur(120px) saturate(140%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+
+/* ===============================
+   Layout container
+   =============================== */
+
+#container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===============================
+   Content wrapper
+   =============================== */
+
+.content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 64px 24px;
+  line-height: 1.7;
+}
+
+/* ===============================
+   Hero section
+   =============================== */
+
+main {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#hero {
+  max-width: 720px;
+  text-align: center;
+  padding: 16px;
+}
+
+#hero h1 {
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+
+  color: var(--purple-neon);
+  text-shadow:
+    0 0 12px var(--purple-glow),
+    0 0 24px rgba(157, 78, 221, 0.3);
+}
+
+#hero p {
+  font-size: 18px;
+  color: var(--text-muted);
+  margin-bottom: 2em;
+}
+
+/* ===============================
+   Links / CTA
+   =============================== */
+
+#links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+#links a {
+  text-decoration: none;
+}
+
+#links a.button {
+  padding: 14px 24px;
+  border-radius: 10px;
+
+  background: linear-gradient(
+    135deg,
+    var(--purple-soft),
+    var(--purple-neon)
+  );
+
+  color: #0b0b0f;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+
+  box-shadow:
+    0 0 20px var(--purple-glow),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+#links a.button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 32px var(--purple-glow),
+    0 0 64px rgba(199, 125, 255, 0.4);
+}
+
+/* ===============================
+   Responsive
+   =============================== */
+
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 36px;
+  }
+
+  #hero p {
+    font-size: 16px;
+  }
+
+  #links {
+    flex-direction: column;
+  }
+}
+
+/* ===============================
+   Welcome / Hero page
+   =============================== */
+
+.hero-page {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-inner {
+  max-width: 720px;
+  text-align: center;
+}
+
+.hero-inner h1 {
+  animation: glow-breathe 14s ease-in-out infinite;
+}
+
+
+.hero-inner p {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-meta {
+  margin-top: 1.5em;
+  color: var(--text-muted);
+}
+
+.hero-note {
+  margin-top: 2.5em;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+
+/* ===============================
+   About page
+   =============================== */
+
+.about-page {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+}
+
+.about-inner {
+  max-width: 560px;
+  text-align: center;
+}
+
+.about-inner h1 {
+  font-size: 42px;
+  margin-bottom: 0.6em;
+
+  color: var(--purple-neon);
+  text-shadow:
+    0 0 10px var(--purple-glow),
+    0 0 20px rgba(157, 78, 221, 0.25);
+}
+
+.about-subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 3em;
+}
+
+.about-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6em;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.about-divider {
+  width: 48px;
+  height: 1px;
+  margin: 3em auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--purple-neon),
+    transparent
+  );
+  opacity: 0.6;
+}
+
+.about-note {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+@keyframes glow-breathe {
+  0% {
+    text-shadow:
+      0 0 8px var(--purple-glow),
+      0 0 16px rgba(157, 78, 221, 0.25);
+  }
+  50% {
+    text-shadow:
+      0 0 16px var(--purple-glow),
+      0 0 32px rgba(157, 78, 221, 0.4);
+  }
+  100% {
+    text-shadow:
+      0 0 8px var(--purple-glow),
+      0 0 16px rgba(157, 78, 221, 0.25);
+  }
+}
