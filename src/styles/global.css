@@ -27,16 +27,38 @@ body {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
-  min-height: 100vh;
+  margin: 0;
 
   background:
-    radial-gradient(
-      circle at top,
+    radial-gradient(circle at top,
       rgba(199, 125, 255, 0.08),
-      transparent 60%
-    ),
+      transparent 60%),
     var(--black);
+}
+
+.page {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 80px 24px;
+}
+
+.page-inner {
+  max-width: 720px;
+  width: 100%;
+  text-align: center;
+}
+
+.site-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ===============================
@@ -110,7 +132,6 @@ body {
    =============================== */
 
 main {
-  min-height: calc(100vh - 64px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -157,11 +178,9 @@ main {
   padding: 14px 24px;
   border-radius: 10px;
 
-  background: linear-gradient(
-    135deg,
-    var(--purple-soft),
-    var(--purple-neon)
-  );
+  background: linear-gradient(135deg,
+      var(--purple-soft),
+      var(--purple-neon));
 
   color: #0b0b0f;
   font-weight: 600;
@@ -206,7 +225,7 @@ main {
    =============================== */
 
 .hero-page {
-  min-height: calc(100vh - 64px);
+  min-height: calc(80vh - 64px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -239,41 +258,13 @@ main {
   color: var(--text-muted);
 }
 
-
-/* ===============================
-   About page
-   =============================== */
-
-.about-page {
-  min-height: calc(100vh - 64px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 24px;
-}
-
-.about-inner {
-  max-width: 560px;
-  text-align: center;
-}
-
-.about-inner h1 {
-  font-size: 42px;
-  margin-bottom: 0.6em;
-
-  color: var(--purple-neon);
-  text-shadow:
-    0 0 10px var(--purple-glow),
-    0 0 20px rgba(157, 78, 221, 0.25);
-}
-
-.about-subtitle {
+.content-subtitle {
   color: var(--text-muted);
   font-size: 1.1rem;
   margin-bottom: 3em;
 }
 
-.about-body {
+.content-body {
   display: flex;
   flex-direction: column;
   gap: 1.6em;
@@ -281,20 +272,18 @@ main {
   line-height: 1.75;
 }
 
-.about-divider {
+.content-devider {
   width: 48px;
   height: 1px;
   margin: 3em auto;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--purple-neon),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      var(--purple-neon),
+      transparent);
   opacity: 0.6;
 }
 
-.about-note {
+.content-note {
   font-size: 0.9rem;
   color: var(--text-muted);
 }
@@ -305,14 +294,71 @@ main {
       0 0 8px var(--purple-glow),
       0 0 16px rgba(157, 78, 221, 0.25);
   }
+
   50% {
     text-shadow:
       0 0 16px var(--purple-glow),
       0 0 32px rgba(157, 78, 221, 0.4);
   }
+
   100% {
     text-shadow:
       0 0 8px var(--purple-glow),
       0 0 16px rgba(157, 78, 221, 0.25);
   }
+}
+
+/* ===============================
+   Footer
+   =============================== */
+
+.site-footer {
+  margin-top: 120px;
+  padding: 32px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footer-right {
+  display: flex;
+  gap: 24px;
+}
+
+.site-footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: var(--purple-neon);
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-muted);
+  transition:
+    color 0.25s ease,
+    filter 0.25s ease;
+}
+
+.social-link:hover {
+  color: var(--purple-neon);
+  filter: drop-shadow(0 0 8px var(--purple-glow));
+}
+
+.instagram-icon {
+  display: block;
 }

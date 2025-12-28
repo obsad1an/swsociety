@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Impressum · Safeword Society">
+  <div id="container">
+    <img class="background" src="/background.svg" alt="" fetchpriority="high" />
+    <main class="hero-page">
+      <section class="hero-inner">
+        <h1>Impressum</h1>
+
+        <p class="page-subtitle">Legal information</p>
+
+        <div class="page-body">
+          <p>
+            Safeword Society<br />
+            Berlin, Germany
+          </p>
+
+          <p>
+            Contact:<br />
+            hello@safewordsociety.me
+          </p>
+
+          <p>
+            This website is operated for informational purposes related to a
+            private event.
+          </p>
+        </div>
+
+        <div class="page-divider"></div>
+
+        <p class="page-note">
+          © {new Date().getFullYear()} Safeword Society
+        </p>
+      </section>
+    </main>
+  </div>
+</BaseLayout>
