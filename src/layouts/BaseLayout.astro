@@ -19,6 +19,15 @@ import "../styles/global.css";
         <a href="/aboutus">About Us</a>
         <a href="/aboutevent">About the Event</a>
       </nav>
+
+      <button
+        class="theme-toggle"
+        aria-label="Toggle theme"
+        onclick="toggleTheme()"
+      >
+        <span class="theme-icon" aria-hidden="true">☾</span>
+        <span class="theme-label">Mood</span>
+      </button>
     </header>
 
     <div class="site-content">
@@ -97,5 +106,40 @@ import "../styles/global.css";
         </div>
       </div>
     </footer>
+    <script>
+      window.setTheme = function (theme) {
+        document.body.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+      };
+
+      window.toggleTheme = function () {
+        const current = document.body.getAttribute("data-theme") || "dark";
+        window.setTheme(current === "dark" ? "light" : "dark");
+      };
+
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        document.body.setAttribute("data-theme", savedTheme);
+      }
+    </script>
+    <script>
+      const updateThemeIcon = () => {
+        const icon = document.querySelector(".theme-icon");
+        if (!icon) return;
+
+        const theme = document.body.getAttribute("data-theme") || "dark";
+
+        icon.textContent = theme === "dark" ? "☾" : "☀";
+      };
+
+      const originalToggleTheme = window.toggleTheme;
+
+      window.toggleTheme = function () {
+        originalToggleTheme();
+        updateThemeIcon();
+      };
+
+      updateThemeIcon();
+    </script>
   </body>
 </html>

@@ -3,8 +3,8 @@
    =============================== */
 
 :root {
-  --black: #0b0b0f;
-  --black-soft: #12121a;
+  /* Dark theme (default) */
+  --bg-main: #0b0b0f;
 
   --purple-neon: #c77dff;
   --purple-soft: #9d4edd;
@@ -22,21 +22,15 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: var(--black);
-  color: var(--text-main);
+  height: 100%;
 }
 
 body {
   display: flex;
   flex-direction: column;
   font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
-  margin: 0;
-
-  background:
-    radial-gradient(circle at top,
-      rgba(199, 125, 255, 0.08),
-      transparent 60%),
-    var(--black);
+  color: var(--text-main);
+  background-color: var(--bg-main);
 }
 
 .page {
@@ -94,18 +88,30 @@ body {
    Background
    =============================== */
 
-#background {
+.backgrounds {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 0;
-  filter: blur(120px) saturate(140%);
-  opacity: 0.55;
   pointer-events: none;
 }
 
+.background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 160%;
+  height: 160%;
+
+  transform: translate(-50%, -50%);
+
+  filter: blur(140px) saturate(140%);
+  opacity: 0.55;
+
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  object-fit: cover;
+}
 
 /* ===============================
    Layout container
@@ -361,4 +367,80 @@ main {
 
 .instagram-icon {
   display: block;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--text-muted);
+
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.15s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--purple-neon);
+  background-color: rgba(199, 125, 255, 0.08);
+  box-shadow: 0 0 12px var(--purple-glow);
+  transform: translateY(-1px);
+}
+
+.theme-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.theme-label {
+  font-size: 11px;
+}
+
+
+/* Dark default */
+.bg-light {
+  opacity: 0;
+}
+
+/* Light theme */
+body[data-theme="light"] .bg-dark {
+  opacity: 0;
+}
+
+body[data-theme="light"] .bg-light {
+  opacity: 0.33;
+  filter: blur(160px) saturate(100%);
+}
+
+body[data-theme="light"] {
+  --bg-main: #f7f7fb;
+
+  --text-main: #1a1a1a;
+  --text-muted: #555;
+}
+
+.top-nav {
+  padding: 16px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 960px;
+  margin: 0 auto;
+  gap: 68px; 
 }
